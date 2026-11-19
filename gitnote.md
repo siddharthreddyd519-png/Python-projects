@@ -282,3 +282,70 @@ Create/Edit File
 - **Pull** integrates remote changes.
 - **Restore** recovers uncommitted changes or deletions.
 - **Log** displays commit history.
+
+## 7. Git Remote Commands (Connecting to GitHub)
+
+### 1. Check connected repositories
+```bash
+git remote -v
+```
+**Purpose:** Displays the remote repository URLs connected to your local project.
+
+---
+
+### 2. Add a new remote repository
+```bash
+git remote add origin https://github.com/username/repository.git
+```
+**Purpose:** Connects your local Git repository to a GitHub repository.
+
+- `remote` → manages remote connections.
+- `add` → adds a new remote.
+- `origin` → the nickname of the remote.
+- `URL` → the GitHub repository address.
+
+---
+
+### 3. Change an existing remote URL
+```bash
+git remote set-url origin https://github.com/username/new-repository.git
+```
+**Purpose:** Changes the URL associated with an existing remote named `origin`.
+
+**Use this when:** Your local project is connected to the wrong GitHub repository.
+
+---
+
+### 4. Remove a remote repository
+```bash
+git remote remove origin
+```
+**Purpose:** Removes the remote connection named `origin` from your local repository.
+
+**Note:** This does not delete your local files or the GitHub repository itself.
+
+---
+
+### 5. Push your code to GitHub
+```bash
+git push -u origin main
+```
+**Purpose:** Uploads your local commits to the GitHub `main` branch and establishes upstream tracking.
+
+- `push` → uploads commits.
+- `origin` → remote repository name.
+- `main` → branch name.
+- `-u` → establishes upstream tracking for future pushes.
+
+---
+
+### Quick Revision
+
+| Command | What it does |
+|---|---|
+| `git remote -v` | View remote URLs |
+| `git remote add origin <URL>` | Add a remote |
+| `git remote set-url origin <URL>` | Change remote URL |
+| `git remote remove origin` | Remove a remote |
+| `git push -u origin main` | Push commits to GitHub |
+
