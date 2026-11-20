@@ -267,3 +267,206 @@ My goal is to understand concepts and implement them independently rather than b
 ## Next Lesson
 
 **Conditional Statements — `if`, `elif`, and `else`**
+# Python Notes — Lesson 6: Conditional Statements
+
+## 1. What are Conditional Statements?
+
+Conditional statements allow a program to make decisions based on whether a condition is `True` or `False`.
+
+They allow programs to execute different blocks of code depending on the situation.
+
+---
+
+## 2. The `if` Statement
+
+The `if` statement executes a block of code when a condition is `True`.
+
+### Syntax
+
+```python
+if condition:
+    statement
+```
+
+### Example
+
+```python
+balance = 15000
+
+if balance > 10000:
+    print("Healthy balance")
+```
+
+### How it works
+
+1. Python evaluates the condition.
+2. If the condition is `True`, the indented code executes.
+3. If the condition is `False`, Python skips the block.
+
+---
+
+## 3. Comparison Operators
+
+Comparison operators compare values and produce either `True` or `False`.
+
+| Operator | Meaning | Example |
+|---|---|---|
+| `>` | Greater than | `10 > 5` |
+| `<` | Less than | `5 < 10` |
+| `>=` | Greater than or equal to | `10 >= 10` |
+| `<=` | Less than or equal to | `5 <= 10` |
+| `==` | Equal to | `10 == 10` |
+| `!=` | Not equal to | `10 != 5` |
+
+---
+
+## 4. The `else` Statement
+
+`else` executes when the condition associated with `if` is `False`.
+
+### Syntax
+
+```python
+if condition:
+    statement
+else:
+    statement
+```
+
+### Example
+
+```python
+balance = 5000
+
+if balance >= 10000:
+    print("Healthy balance")
+else:
+    print("Low balance")
+```
+
+If the balance is below ₹10,000, the `else` block executes.
+
+---
+
+## 5. The `elif` Statement
+
+`elif` means **else if**.
+
+It allows us to check additional conditions when previous conditions are `False`.
+
+### Syntax
+
+```python
+if condition1:
+    statement
+elif condition2:
+    statement
+else:
+    statement
+```
+
+### Example
+
+```python
+balance = 7500
+
+if balance >= 10000:
+    print("Healthy balance")
+elif balance >= 5000:
+    print("Moderate balance")
+else:
+    print("Low balance")
+```
+
+### How Python evaluates it
+
+Python evaluates conditions from top to bottom.
+
+- If the first condition is `True`, its block executes.
+- Otherwise, Python checks the next condition.
+- If no condition is `True`, the `else` block executes.
+
+Only one block executes in an `if`–`elif`–`else` chain.
+
+---
+
+## 6. Logical Operators
+
+Logical operators allow us to combine or modify conditions.
+
+### `and`
+
+Both conditions must be `True`.
+
+```python
+age = 21
+
+if age >= 18 and age <= 25:
+    print("Age is between 18 and 25")
+```
+
+| Condition 1 | Condition 2 | Result |
+|---|---|---|
+| True | True | True |
+| True | False | False |
+| False | True | False |
+| False | False | False |
+
+### `or`
+
+At least one condition must be `True`.
+
+```python
+age = 17
+
+if age < 18 or age > 60:
+    print("Outside the standard range")
+```
+
+### `not`
+
+`not` reverses a Boolean result.
+
+```python
+is_active = False
+
+if not is_active:
+    print("Account is inactive")
+```
+
+---
+
+## 7. Understanding Conditions from Top to Bottom
+
+Example:
+
+```python
+balance = 15000
+
+if balance >= 20000:
+    print("Premium balance")
+elif balance >= 10000:
+    print("Good balance")
+elif balance >= 5000:
+    print("Moderate balance")
+else:
+    print("Low balance")
+```
+
+Python checks the first condition.
+
+If it is false, it moves to the next.
+
+When a condition is true, Python executes its block and skips the remaining blocks.
+
+### Important Programming Principle
+
+Conditions should be arranged carefully.
+
+In many cases, unnecessary upper-bound conditions can be removed because earlier conditions already eliminate those ranges.
+
+---
+
+# Practice Program — ATM Balance Analyzer
+
+```python
