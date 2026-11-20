@@ -349,3 +349,145 @@ git push -u origin main
 | `git remote remove origin` | Remove a remote |
 | `git push -u origin main` | Push commits to GitHub |
 
+# Git Notes — Push Rejected & Merge
+
+## 1. The Error: Push Rejected
+
+When I attempted to push my local changes to GitHub, I encountered:
+
+```text
+! [rejected] main -> main (fetch first)
+error: failed to push some refs
+```
+
+### Why did this happen?
+
+My local repository and the remote GitHub repository had different histories.
+
+The remote repository contained commits that my local repository didn't have.
+
+Git rejected my push because it didn't want me to accidentally overwrite changes already present on GitHub.
+
+---
+
+## 2. Understanding the Situation
+
+Imagine:
+
+**Local repository (my computer):**
+- Contains my new code and commits.
+- Doesn't contain some of the commits present on GitHub.
+
+**Remote repository (GitHub):**
+- Contains commits that my local repository hasn't downloaded yet.
+
+Git needs me to synchronize both repositories before pushing.
+
+---
+
+## 3. Solution — Pull Before Push
+
+### Step 1: Pull
+
+```bash
+git pull origin main
+```
+
+### What does this command mean?
+
+| Component | Meaning |
+|---|---|
+| `git` | Git version control |
+| `pull` | Fetch remote changes and integrate them into the current local branch |
+| `origin` | The name of the remote repository |
+| `main` | The branch being pulled |
+
+Git downloads the remote changes and attempts to integrate them with my local changes.
+
+---
+
+## 4. Git Opens Vim During a Merge
+
+Sometimes, after running `git pull`, Git opens an editor showing something like:
+
+```text
+Merge branch 'main' of https://github.com/...
+```
+
+Git is asking me to confirm the merge commit message.
+
+This editor may be Vim.
+
+### How to save and exit Vim
+
+1. Press `Esc`.
+2. Type `:wq`.
+3. Press `Enter`.
+
+### Meaning
+
+- `w` = Write (save)
+- `q` = Quit (exit)
+
+This confirms the merge commit message and allows Git to complete the merge.
+
+---
+
+## 5. Push the Changes
+
+After the pull and merge are successfully completed:
+
+```bash
+git push origin main
+```
+
+This uploads my local commits to GitHub.
+
+---
+
+## 6. The Workflow
+
+When my push is rejected because the remote contains changes I don't have:
+
+```text
+Local changes
+     ↓
+git pull origin main
+     ↓
+Merge remote changes
+     ↓
+git push origin main
+     ↓
+Changes uploaded to GitHub
+```
+
+---
+
+## 7. Important Warning
+
+Don't blindly use:
+
+```bash
+git push --force
+```
+
+Force-pushing can overwrite remote history and potentially destroy other people's changes or commits.
+
+---
+
+### Commands Learned
+
+```bash
+git pull origin main
+git push origin main
+```
+
+### New Concepts Learned
+
+- Local repository vs remote repository
+- Remote changes
+- Synchronization
+- Merge
+- Merge commit message
+- Vim basics (`:wq`)
+- Push rejection
